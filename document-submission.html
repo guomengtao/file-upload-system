@@ -47,6 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="documents-list.html">文档列表</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -59,51 +62,41 @@
             </h2>
             
             <form id="documentSubmissionForm">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="documentName" placeholder="Document Name" required>
-                            <label for="documentName" class="required-label">Document Name</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="documentType" required>
-                                <option value="">Select Document Type</option>
-                                <option value="report">Report</option>
-                                <option value="invoice">Invoice</option>
-                                <option value="contract">Contract</option>
-                                <option value="manual">Manual</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <label for="documentType" class="required-label">Document Type</label>
-                        </div>
-                    </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="documentType" required>
+                        <option value="">选择文档类型</option>
+                        <option value="report">报告</option>
+                        <option value="contract">合同</option>
+                        <option value="invoice">发票</option>
+                        <option value="manual">使用手册</option>
+                        <option value="other">其他</option>
+                    </select>
+                    <label for="documentType">文档类型</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Document Description" id="documentDescription" style="height: 100px"></textarea>
-                    <label for="documentDescription">Document Description</label>
+                    <input type="text" class="form-control" id="documentName" placeholder="文档名称" required>
+                    <label for="documentName">文档名称</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="附加说明" id="documentDescription" style="height: 100px"></textarea>
+                    <label for="documentDescription">附加说明（可选）</label>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="documentPages" placeholder="Number of Pages" min="1">
-                            <label for="documentPages">Number of Pages</label>
+                            <input type="number" class="form-control" id="documentPages" placeholder="页数" min="1" value="1">
+                            <label for="documentPages">页数（可选）</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="documentDate" placeholder="Document Date">
-                            <label for="documentDate">Document Date</label>
+                            <input type="file" class="form-control" id="documentFile" accept=".pdf,.doc,.docx,.txt">
+                            <label for="documentFile">上传文件（可选）</label>
                         </div>
                     </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="documentFile" class="form-label">Upload Document (Optional)</label>
-                    <input class="form-control" type="file" id="documentFile" accept=".pdf,.doc,.docx,.txt">
                 </div>
 
                 <div id="successMessage" class="alert alert-success mt-3">
@@ -122,6 +115,21 @@
                     </button>
                 </div>
             </form>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header bg-warning">
+                Test Form
+            </div>
+            <div class="card-body">
+                <form id="testForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="testInput" placeholder="Enter test data" required>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div id="testResult" class="mt-2"></div>
+                </form>
+            </div>
         </div>
     </div>
 
