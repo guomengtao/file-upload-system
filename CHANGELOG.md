@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.2.0] - 2024-12-19
+### Added
+- Document Submission Form page
+- Ability to submit document metadata to Supabase documents table
+- Optional file upload with document details
+- Comprehensive form validation and error handling
+
+### Features
+- Dynamic form with multiple input types
+- Supabase database integration
+- File upload to documents bucket
+- Responsive and user-friendly design
+
+### Improvements
+- Enhanced metadata tracking
+- Flexible document submission process
+- Improved user interaction
+
 ## [1.1.0] - 2024-12-19
 ### Added
 - Company Products Showcase page
