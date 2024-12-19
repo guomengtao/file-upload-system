@@ -1,42 +1,31 @@
-# Supabase File Upload Application
+# File Upload System
 
 ## Overview
-This is a simple web application that allows users to upload, list, download, and delete files using Supabase storage and database.
+A comprehensive file management system built with Supabase, featuring document and screenshot uploads, file browsing, and a unique product showcase.
 
 ## Features
-- File upload to Supabase storage
-- File listing from Supabase database
-- Download and delete file functionality
-- Responsive design with Bootstrap
+- Document and Screenshot Uploads
+- File Management Across Buckets
+- Dynamic Product Showcase
+- Responsive Design
+- Supabase Integration
 
-## Prerequisites
-- A Supabase account
-- A Supabase project with:
-  - Storage bucket named "Documents_bucket"
-  - Documents table with columns: id, created_at, name, size, type, path, status
-
-## Setup
-1. Clone the repository
-2. Replace Supabase URL and Anon Key in `app.js` with your project's credentials
-3. Ensure you have created the required Supabase storage bucket and database table
-
-## Supabase Table Schema
-Create a table named `documents` with the following columns:
-- `id`: bigint (primary key)
-- `created_at`: timestamp with time zone
-- `name`: text
-- `size`: bigint
-- `type`: text
-- `path`: text
-- `status`: text
-
-## Deployment
-This application can be easily deployed using GitHub Pages.
+## Live Demo
+ [View Live Site](https://guomengtao.github.io/file-upload-system/)
 
 ## Technologies Used
-- Supabase
-- Bootstrap
+- HTML5
+- Bootstrap 5
 - JavaScript
+- Supabase
+
+## Setup and Installation
+1. Clone the repository
+2. Configure Supabase credentials in JavaScript files
+3. Open `index.html` in a web browser
+
+## Deployment
+Deployed on GitHub Pages from the `gh-pages` branch.
 
 ## License
 MIT License
