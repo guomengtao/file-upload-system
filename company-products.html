@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Products Showcase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        .product-image {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        #productModal .modal-body img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        .badge-category {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .product-details {
+            background-color: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-collection-fill me-2"></i>Company Products
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h1 class="display-4">Our Product Showcase</h1>
+                <p class="lead text-muted">Explore our latest and most innovative products</p>
+            </div>
+        </div>
+
+        <div id="productGallery" class="row g-4">
+            <!-- Products will be dynamically loaded here -->
+            <div class="col-12 text-center" id="loadingSpinner">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2">Loading products...</p>
+            </div>
+            <div id="noProductsMessage" class="col-12 text-center" style="display: none;">
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>No products found in the showcase.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="productModalImage" src="" alt="Product Image">
+                    <div id="productModalDescription" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Home</a></li>
+                        <li><a href="documents-upload.html" class="text-light">Upload Documents</a></li>
+                        <li><a href="screenshots-upload.html" class="text-light">Upload Screenshots</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>File Management</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bucket-files.html" class="text-light">Documents Files</a></li>
+                        <li><a href="screenshots-files.html" class="text-light">Screenshots Files</a></li>
+                        <li><a href="combined-files.html" class="text-light">Combined Files</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Bucket Status</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bucket-status.html" class="text-light">Documents Bucket Status</a></li>
+                        <li><a href="screenshots-status.html" class="text-light">Screenshots Bucket Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 File Upload System. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="company-products.js"></script>
+</body>
+</html>

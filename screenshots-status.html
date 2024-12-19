@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshots Bucket Status</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body { padding-top: 60px; }
+        .status-icon { font-size: 2rem; }
+        .status-connected { color: green; }
+        .status-disconnected { color: red; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">File Upload System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Upload Files</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bucket-status.html">Documents Bucket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="screenshots-status.html">Screenshots Bucket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bucket-files.html">Documents Files</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="screenshots-files.html">Screenshots Files</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Screenshots Bucket Status</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <div id="connectionStatus" class="mb-3">
+                            <i id="statusIcon" class="bi bi-question-circle status-icon"></i>
+                            <h4 id="statusText" class="mt-2">Checking Connection...</h4>
+                        </div>
+                        <div id="bucketDetails" class="d-none">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Bucket Name</th>
+                                        <td id="bucketName">-</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Files</th>
+                                        <td id="totalFiles">-</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Size</th>
+                                        <td id="totalSize">-</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last Updated</th>
+                                        <td id="lastUpdated">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">Connection Logs</h4>
+                    </div>
+                    <div class="card-body">
+                        <pre id="connectionLogs" class="bg-light p-3"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="screenshots-status.js"></script>
+</html>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Home</a></li>
+                        <li><a href="documents-upload.html" class="text-light">Upload Documents</a></li>
+                        <li><a href="screenshots-upload.html" class="text-light">Upload Screenshots</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>File Management</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bucket-files.html" class="text-light">Documents Files</a></li>
+                        <li><a href="screenshots-files.html" class="text-light">Screenshots Files</a></li>
+                        <li><a href="combined-files.html" class="text-light">Combined Files</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Bucket Status</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bucket-status.html" class="text-light">Documents Bucket Status</a></li>
+                        <li><a href="screenshots-status.html" class="text-light">Screenshots Bucket Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 File Upload System. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

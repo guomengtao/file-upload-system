@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Screenshots</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body { padding-top: 60px; }
+        #imagePreview { 
+            max-width: 100%; 
+            max-height: 300px; 
+            object-fit: contain; 
+            display: none; 
+            margin: 15px 0; 
+        }
+        .upload-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #errorDetails, #statusPanel {
+            max-width: 600px;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">File Upload System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Upload Files</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bucket-status.html">Documents Bucket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="screenshots-status.html">Screenshots Bucket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bucket-files.html">Documents Files</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="screenshots-upload.html">Upload Screenshots</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 upload-container">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">
+                            <i class="bi bi-cloud-upload me-2"></i>Upload Screenshots
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <input type="file" id="fileInput" class="form-control" accept="image/*" aria-describedby="uploadButton">
+                                <button id="uploadBtn" class="btn btn-primary" type="button">
+                                    <i class="bi bi-upload"></i> Upload Screenshot
+                                </button>
+                            </div>
+                            <small class="form-text text-muted">
+                                Max file size: 10MB. Supported types: JPG, PNG, GIF
+                            </small>
+                        </div>
+
+                        <div class="text-center">
+                            <img id="imagePreview" src="#" alt="Image Preview">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error Details Panel -->
+                <div id="errorDetails" class="alert alert-danger" role="alert" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="alert-heading">
+                                <i class="bi bi-exclamation-triangle-fill"></i> Upload Error
+                            </h4>
+                            <p id="errorMessage" class="mb-0">Detailed error information will appear here.</p>
+                            <p id="errorContext" class="text-muted small mt-1">Additional context about the error.</p>
+                        </div>
+                        <button id="dismissErrorBtn" class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Status Panel -->
+                <div id="statusPanel" class="card" style="display: none;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        Upload Status
+                        <button id="cancelUploadBtn" class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress mb-3">
+                            <div id="uploadProgressBar" class="progress-bar" role="progressbar" 
+                                 style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                        <div id="statusMessage" class="text-muted">No upload in progress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="screenshots-upload.js"></script>
+</html>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light">Home</a></li>
+                        <li><a href="documents-upload.html" class="text-light">Upload Documents</a></li>
+                        <li><a href="screenshots-upload.html" class="text-light">Upload Screenshots</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>File Management</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bucket-files.html" class="text-light">Documents Files</a></li>
+                        <li><a href="screenshots-files.html" class="text-light">Screenshots Files</a></li>
+                        <li><a href="combined-files.html" class="text-light">Combined Files</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Bucket Status</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="bucket-status.html" class="text-light">Documents Bucket Status</a></li>
+                        <li><a href="screenshots-status.html" class="text-light">Screenshots Bucket Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 File Upload System. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
