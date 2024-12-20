@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Submission Form</title>
+    <title>Document Submission | File Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
             background-color: #f4f6f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
         .form-container {
             background-color: white;
@@ -37,7 +38,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="bi bi-file-earmark-text me-2"></i>Document Submission
+                <i class="bi bi-file-earmark-text me-2"></i>File Management System
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -45,10 +46,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house me-2"></i>Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="documents-list.html">文档列表</a>
+                        <a class="nav-link" href="documents-list.html">
+                            <i class="bi bi-list-ul me-2"></i>Document List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="document-submission.html">
+                            <i class="bi bi-upload me-2"></i>Upload Document
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -64,37 +74,37 @@
             <form id="documentSubmissionForm">
                 <div class="form-floating mb-3">
                     <select class="form-select" id="documentType" required>
-                        <option value="">选择文档类型</option>
-                        <option value="report">报告</option>
-                        <option value="contract">合同</option>
-                        <option value="invoice">发票</option>
-                        <option value="manual">使用手册</option>
-                        <option value="other">其他</option>
+                        <option value="">Select Document Type</option>
+                        <option value="report">Report</option>
+                        <option value="contract">Contract</option>
+                        <option value="invoice">Invoice</option>
+                        <option value="manual">Manual</option>
+                        <option value="other">Other</option>
                     </select>
-                    <label for="documentType">文档类型</label>
+                    <label for="documentType">Document Type</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="documentName" placeholder="文档名称" required>
-                    <label for="documentName">文档名称</label>
+                    <input type="text" class="form-control" id="documentName" placeholder="Document Name" required>
+                    <label for="documentName">Document Name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="附加说明" id="documentDescription" style="height: 100px"></textarea>
-                    <label for="documentDescription">附加说明（可选）</label>
+                    <textarea class="form-control" placeholder="Additional Description" id="documentDescription" style="height: 100px"></textarea>
+                    <label for="documentDescription">Additional Description (Optional)</label>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="documentPages" placeholder="页数" min="1" value="1">
-                            <label for="documentPages">页数（可选）</label>
+                            <input type="number" class="form-control" id="documentPages" placeholder="Pages" min="1" value="1">
+                            <label for="documentPages">Pages (Optional)</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <input type="file" class="form-control" id="documentFile" accept=".pdf,.doc,.docx,.txt">
-                            <label for="documentFile">上传文件（可选）</label>
+                            <label for="documentFile">Upload File (Optional)</label>
                         </div>
                     </div>
                 </div>

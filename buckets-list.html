@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucket Management | File Management System</title>
+    
+    <!-- 现代化的 CSS 框架和图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--card-bg) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .container-main {
+            max-width: 1200px;
+            padding-top: 50px;
+        }
+
+        .bucket-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .bucket-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .bucket-card .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .bucket-card .card-body {
+            background-color: var(--card-bg);
+        }
+
+        .bucket-status {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .empty-state-icon {
+            font-size: 5rem;
+            color: var(--primary-color);
+            opacity: 0.6;
+        }
+
+        #loadingSpinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .debug-panel {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-cloud-upload text-primary"></i> File Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="document-submission.html">
+                            <i class="bi bi-file-earmark-arrow-up"></i> Document Upload
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="buckets-list.html">
+                            <i class="bi bi-cloud-check"></i> Bucket Management
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create-bucket.html">
+                            <i class="bi bi-plus-circle"></i> Create Bucket
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <div class="container container-main">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">
+                    <i class="bi bi-cloud-upload text-primary"></i> Bucket Management
+                </h1>
+            </div>
+        </div>
+
+        <!-- 加载动画 -->
+        <div id="loadingSpinner" class="spinner-border text-primary" role="status" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+        <!-- 错误消息 -->
+        <div id="errorContainer" class="alert alert-danger mt-3" style="display: none;"></div>
+
+        <!-- Bucket列表 -->
+        <div id="bucketsContainer" class="row g-4">
+            <!-- Bucket卡片将在此动态生成 -->
+        </div>
+    </div>
+
+    <!-- 调试面板 -->
+    <div class="container debug-panel mt-4">
+        <h5>Debug Info</h5>
+        <pre id="debugOutput" class="small text-muted"></pre>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">
+                <i class="bi bi-cloud-upload"></i> File Management System 2024
+            </p>
+            <small class="text-muted">Powered by Supabase</small>
+        </div>
+    </footer>
+
+    <!-- 引入必要的 JavaScript 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0"></script>
+    <script src="buckets-list.js"></script>
+</body>
+</html>
